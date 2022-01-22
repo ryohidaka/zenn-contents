@@ -20,13 +20,13 @@ published: true
 
 ### 2. Instant Tokensとインスタグラムアカウントを連携する
 1. [Instant Tokens](https://www.instant-tokens.com/home)にアクセスし、アカウント登録を行う
-![](https://storage.googleapis.com/zenn-user-upload/f0b0b28e7722-20220110.png)
+![Instant Tokens](/images/instafeed-replacement-token-generator/instant-tokens-login.png)
 
 2. インスタグラムアカウントを連携する
-![](https://storage.googleapis.com/zenn-user-upload/0e4b065ba9bb-20220110.png)
+![](/images/instafeed-replacement-token-generator/instant-tokens-register.png)
 
 3. 設定を開き、JSファイルのURL もしくは リクエスト先URLを取得する
-![](https://storage.googleapis.com/zenn-user-upload/b9a4b4bacdd5-20220110.png)
+![](/images/instafeed-replacement-token-generator/instant-tokens-list.png)
 
 4. Instafeedとトークン取得用JSファイルをインポートする
 ```html:index.html
