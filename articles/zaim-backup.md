@@ -44,6 +44,51 @@ https://dev.zaim.net/
    ![詳細表示](/images/zaim-backup/zaim-dev-info.png)
 
 これで API 登録は完了です。
+続いて Python でデータを取得するコードを実装します。
+
+## コードを実装
+
+### トークンを取得
+
+API を呼び出すには先ほど控えた認証情報に加えて、**アクセストークン**と**アクセスシークレット**が必要なので、それらを取得するコードを実装します。
+
+#### Zaim のデータを取得・操作する Python パッケージを追加する
+
+```shell:ターミナル
+pip install pyzaim
+```
+
+https://pypi.org/project/pyzaim/
+
+#### トークンを取得するためのコードを追加する
+
+```python:auth.py
+from pyzaim import get_access_token
+
+get_access_token()
+```
+
+#### トークン取得用コードを実行し、指示に従って認証情報を入力する
+
+1. コンシューマ ID とコンシューマシークレットを聞かれるので入力
+1. 認証ページの URL が表示されるので、アクセスして許可
+1. 遷移先ページのソースコードから「oauth_verifier」と書いてあるコードをコピーして入力
+1. 問題なければアクセストークンとアクセスシークレットが表示される
+
+```shell:ターミナル
+% python auth.py
+Please input consumer ID : { consumer-key }
+Please input consumer secret : { consumer-secret }
+
+
+Please go here and authorize :  https://auth.zaim.net/users/auth?oauth_token={ oauth-token }
+Please input oauth verifier : { oauth-token }
+
+
+access token : xxxxx
+access token secret : xxxxx
+oauth verifier : xxxxx,xxxxx
+```
 
 ## まとめ
 
