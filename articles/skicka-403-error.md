@@ -3,8 +3,7 @@ title: "Skickaで403エラーが出た場合の対処法"
 emoji: "🌟"
 type: "tech"
 topics: ["GCP", "Skicka", "Github Actions"]
-published: false
----
+published: true
 
 # はじめに
 
@@ -89,7 +88,7 @@ Free space   7.53 GiB     7.53%
 
 # 参考文献
 
-[テストユーザが必要という情報が載っていた](https://twitter.com/mushroom080/status/1403796268644585472?s=20)
+[テストユーザが必要という情報が載っていたツイート](https://twitter.com/mushroom080/status/1403796268644585472?s=20)
 
 https://qiita.com/satackey/items/34c7fc5bf77bd2f5c633
 
