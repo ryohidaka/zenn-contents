@@ -163,6 +163,43 @@ import zaim
 datas, categories, genres, accounts = zaim.getZaimData()
 ```
 
+データが取得できましたが、カテゴリや口座等は ID しか記載されていません。
+そのため、ID をもとに各種名称を付与する処理を実装します。
+
+#### ID をもとに、名称を付与する
+
+名称を付与する処理を追記します。
+
+```python:zaim.py
+def convertData(datas, categories, genres, accounts):
+    """IDをもとに名称を付与する
+    """
+
+    for data in datas:
+
+        # カテゴリ名を付与
+        categoryId = int(data["category_id"])
+        data["category"] = categories[categoryId] if categoryId > 0 else ""
+
+        # 内訳名を付与
+        genreId = int(data["genre_id"])
+        data["genre"] = genres[genreId] if genreId > 0 else ""
+
+        # 口座名を付与
+        fromAccountId = int(data["from_account_id"])
+        data["from"] = accounts[fromAccountId] if fromAccountId > 0 else "-"
+
+        toAccountId = int(data["to_account_id"])
+        data["to"] = accounts[toAccountId] if toAccountId > 0 else "-"
+
+    return datas
+```
+
+```python:main.py
+# 種別名を付与する
+datas = zaim.convertData(datas, categories, genres, accounts)
+```
+
 ## まとめ
 
 ## 参考文献
