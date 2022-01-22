@@ -273,4 +273,12 @@ zaim.outputCSV(datas)
 
 ## まとめ
 
+今回実装したコードは下記リポジトリで公開しています。
+
+https://github.com/ryohidaka/zaim-backup
+
 ## 参考文献
+
+https://maku77.github.io/python/env/dotenv.html
+
+https://laboratory.kazuuu.net/saving-a-dictionary-to-a-csv-file-in-python/#toc5
