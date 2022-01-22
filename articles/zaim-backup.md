@@ -90,6 +90,79 @@ access token secret : xxxxx
 oauth verifier : xxxxx,xxxxx
 ```
 
+続いて、取得したトークン情報を用いてデータを取得するコードを実装します。
+
+### データを取得するコードを追加する
+
+#### env ファイルに取得したトークン情報を記載する
+
+`.env`ファイルを作成し、取得したトークンを記載します。
+
+```shell:.env
+CONSUMER_KEY=
+CONSUMER_SECRET=
+ACCESS_TOKEN=
+ACCESS_SECRET=
+```
+
+#### データを取得するコードを追加する
+
+トークン情報を読み込む`config.py`とデータを取得する`zaim.py`、各処理を呼び出す`main.py`を実装します。
+
+```python:config.py
+# .env ファイルをロードして環境変数へ反映
+from dotenv import load_dotenv
+load_dotenv()
+
+# 環境変数を参照
+import os
+CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+
+```
+
+```python:zaim.py
+import config
+from pyzaim import ZaimAPI
+
+def getZaimData():
+    """Zaimのデータを取得する
+    """
+
+    consumer_key = config.CONSUMER_KEY
+    consumer_secret = config.CONSUMER_SECRET
+    access_token = config.ACCESS_TOKEN
+    access_secret = config.ACCESS_SECRET
+
+    api = ZaimAPI(consumer_key, consumer_secret,
+                  access_token, access_secret, 'verifier')
+    # データ一覧の取得
+    datas = api.get_data()
+
+    # カテゴリ一覧情報
+    categories = api.category_itos
+
+    # ジャンル一覧情報を取得
+    genres = api.genre_itos
+
+    # 口座一覧情報を取得
+    accounts = api.account_itos
+
+    msg = str(len(datas)) + " 件のデータを取得しました"
+    print(msg)
+
+    return [datas, categories, genres, accounts]
+```
+
+```python:main.py
+import zaim
+
+# データ取得
+datas, categories, genres, accounts = zaim.getZaimData()
+```
+
 ## まとめ
 
 ## 参考文献
