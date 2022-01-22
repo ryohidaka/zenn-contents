@@ -200,6 +200,77 @@ def convertData(datas, categories, genres, accounts):
 datas = zaim.convertData(datas, categories, genres, accounts)
 ```
 
+続いてカラム名を日本語に変更し、CSV 出力する処理を実装します。
+
+#### データを出力するコードを追加
+
+カラム名を日本語に変更し、ユーザ ID など不要なデータを除去します。
+続いて、整頓されたデータを CSV 出力します。
+
+```python:zaim.py
+import csv
+
+def outputCSV(datas):
+    """カラム名を日本語に置換し、CSV出力する
+    """
+
+    # 種別名を日本語に置換
+    for data in datas:
+        keys = {
+            "date": "日付",
+            "mode": "方法",
+            "category": "カテゴリ",
+            "genre": "カテゴリの内訳",
+            "from": "支払元",
+            "to": "入金先",
+            "name": "品目",
+            "comment": "メモ",
+            "place": "お店",
+            "currency_code": "通貨"
+        }
+        for k, v in keys.items():
+            data[v] = data.pop(k)
+
+        # 入出金
+        data["収入"] = data.pop("amount") if data["方法"] == "income" else 0
+        data["支出"] = data.pop("amount") if data["方法"] == "payment" else 0
+        data["振替"] = data.pop("amount") if data["方法"] == "transfer" else 0
+
+        # 不要なキーを削除
+        unUsedKeys = ["id", "user_id", "category_id",
+                      "genre_id", "from_account_id", "to_account_id", "active", "created", "receipt_id", "place_uid", "original_money_ids"]
+        for key in unUsedKeys:
+            if(key in data):
+                data.pop(key)
+
+    # ヘッダーを指定
+    fieldName = list(keys.values())
+    fieldName.extend(['収入', '支出', '振替'])
+
+    # CSV出力
+    with open('zaim-backup.csv', 'w', encoding='utf-8') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldName)
+        writer.writeheader()
+        writer.writerows(datas)
+```
+
+```python:main.py
+# CSV出力
+zaim.outputCSV(datas)
+```
+
+これでコードの実装は完了です。
+
+### 実装したコードを実行する
+
+ターミナルなどシェルスクリプトが実行できるアプリケーションで、下記コマンドを実行します。
+
+```shell:ターミナル
+% python main.py
+```
+
+コンソールに取得件数が表示され、`zaim-backup.csv`というファイルが生成されます。
+
 ## まとめ
 
 ## 参考文献
