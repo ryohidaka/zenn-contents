@@ -4,7 +4,6 @@ emoji: "🌟"
 type: "tech"
 topics: ["GCP", "Skicka", "Github Actions"]
 published: true
----
 
 # はじめに
 
