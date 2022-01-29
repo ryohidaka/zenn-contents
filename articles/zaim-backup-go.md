@@ -13,6 +13,10 @@ published: false
 
 # 手順
 
+## API 登録
+
+API 登録は、[以前の記事](https://zenn.dev/hidaka/articles/zaim-backup-python)を参考に
+
 ## コードを実装
 
 ## まとめ
