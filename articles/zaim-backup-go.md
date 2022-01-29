@@ -299,3 +299,9 @@ OutputCSV(cd)
 https://github.com/ryohidaka/zaim-backup-go
 
 ## 参考文献
+
+https://zenn.dev/a_ichi1/articles/c9f3870350c5e2
+
+https://qiita.com/nkumag/items/ef372ea35dcfbfa19310
+
+https://itsakura.com/go-switch
