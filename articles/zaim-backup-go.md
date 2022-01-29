@@ -294,4 +294,8 @@ OutputCSV(cd)
 
 ## まとめ
 
+今回実装したコードは下記リポジトリで公開しています。
+
+https://github.com/ryohidaka/zaim-backup-go
+
 ## 参考文献
