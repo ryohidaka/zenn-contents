@@ -256,6 +256,32 @@ cd := ConvertData(d)
 fmt.Println(cd)
 ```
 
+続いてカラム名を日本語に変更し、CSV 出力する処理を実装します。
+
+#### データを出力するコードを追加
+
+カラム名を日本語に変更し、ユーザ ID など不要なデータを除去します。
+続いて、整頓されたデータを CSV 出力します。
+
+```go:zaim.go
+// CSV出力
+func OutputCSV(money []MoneyJP) {
+	file, _ := os.OpenFile("zaim-backup.csv", os.O_RDWR|os.O_CREATE, os.ModePerm)
+	defer file.Close()
+
+	// csvファイルを書き出し
+	gocsv.MarshalFile(&money, file)
+
+}
+```
+
+```go:main.go
+// CSV出力する
+OutputCSV(cd)
+```
+
+これでコードの実装は完了です。
+
 ## まとめ
 
 ## 参考文献
