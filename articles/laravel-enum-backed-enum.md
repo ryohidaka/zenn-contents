@@ -71,6 +71,15 @@ namespace App\Enums
 
 enum Suit
 {
+    case Hearts;
+    case Diamonds;
+    case Clubs;
+    case Spades;
+}
+```
+
+enum Suit
+{
     case Hearts = 1;
     case Diamonds = 2;
     case Clubs = 3;
