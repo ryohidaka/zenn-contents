@@ -8,13 +8,16 @@ published: false
 
 ## 概要
 
+Laravel で Backed Enum を用いた際に個人的に詰まったポイントがあったので、まとめました。
+
 ### 目的
 
-Laravel で Enum に定義した`value`から`label`を参照する
+Laravel で Backed Enum に定義した`value`から`label`を参照する
 
 #### 例
 
-- `SuitID`が**1**の`Suit`の名称を取得する
+- `SuitID`が**1**の`case`を参照する
+- 参照した`case`に対して`label`メソッドを用いてラベル名を取得する。
 - 下記 Enum の場合、**ハート**が返却されること
 
 ```php:app/Enums/Suit.php
