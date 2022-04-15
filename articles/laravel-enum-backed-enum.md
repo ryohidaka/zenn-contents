@@ -159,3 +159,21 @@ Route::get('/', function () {
 });
 ```
 
+## 本題
+
+`Hearts`の`value`と`label`を取得する場合は上記の方法で可能ですが、`value` が `2` の`case`を取得したい場合は、どうすれば良いでしょうか？
+
+## 方法
+
+Backed Enum には**from メソッド**があり、value を引数にしてすることで、該当の`case`を参照することができます。
+
+```php
+use App\Enum\Suit;
+
+// 取得したいSuitのvalueを指定する
+$suit_value = 1;
+
+// valueから該当のSuitを取得し、labelメソッドでラベル名を取得する
+$suit_label = Suit::from($suit_value)->label();
+```
+
