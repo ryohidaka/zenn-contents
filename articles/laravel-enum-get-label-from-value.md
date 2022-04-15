@@ -55,3 +55,93 @@ $suit_value = 1;
 $suit_label = Suit::from($suit_value)->label();
 ```
 
+## PHP8.1 から追加された Enum について
+
+Enum 型を使えば、簡単に 複数の定数を定義できます。
+
+### 定義例
+
+```php:app/Enums/Suit.php
+<?php
+
+namespace App\Enums
+
+enum Suit
+{
+    case Hearts = 1;
+    case Diamonds = 2;
+    case Clubs = 3;
+    case Spades = 4;
+
+    public function label(): string
+    {
+      return match ($this) {
+        Suit::Hearts => 'ハート',
+        Suit::Diamonds => 'ダイヤモンド',
+        Suit::Clubs => 'クラブ',
+        Suit::Spades => 'スペード',
+      }
+    }
+}
+```
+
+### 参照方法
+
+定義した内容は、以下のように`Enumのクラス名`+`変数名`+`value`で参照できます。
+
+```php:routes/web.php
+<?php
+
+use App\Enum\Suit;
+
+Route::get('/', function () {
+
+  var_dump(Suit::Heart->value)
+  // 1
+});
+```
+
+また、下記のように新たにメソッドを定義することもできます。
+
+### label メソッドの例
+
+- 日本語名を返却する`labelメソッド`を追加しました。
+
+```php:app/Enums/Suit.php
+<?php
+
+namespace App\Enums
+
+enum Suit
+{
+    case Hearts = 1;
+    case Diamonds = 2;
+    case Clubs = 3;
+    case Spades = 4;
+
+    public function label(): string
+    {
+      return match ($this) {
+        Suit::Hearts => 'ハート',
+        Suit::Diamonds => 'ダイヤモンド',
+        Suit::Clubs => 'クラブ',
+        Suit::Spades => 'スペード',
+      }
+    }
+}
+```
+
+定義した内容は、以下のように`Enumのクラス名`+`変数名`+`メソッド名`で参照できます。
+
+```php:routes/web.php
+<?php
+
+use App\Enum\Suit;
+
+Route::get('/', function () {
+
+  var_dump(Suit::Heart->label())
+  // 1
+});
+```
+
