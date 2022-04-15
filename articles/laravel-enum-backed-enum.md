@@ -177,3 +177,14 @@ $suit_value = 1;
 $suit_label = Suit::from($suit_value)->label();
 ```
 
+## 参考文献
+
+### 公式ドキュメント
+
+https://www.php.net/manual/ja/language.enumerations.php
+
+### 記事作成時に参考にさせていただいたブログ様
+
+https://zenn.dev/nshiro/articles/dd82ab12afbc3d
+
+https://blog.capilano-fw.com/?p=9829
