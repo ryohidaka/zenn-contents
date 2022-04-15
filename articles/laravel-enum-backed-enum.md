@@ -1,5 +1,5 @@
 ---
-title: "LaravelでvalueからEnumを参照する方法"
+title: "LaravelでBacked Enumを用いた際に、valueからcaseを参照する方法"
 emoji: "🦔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["php", "Laravel", "enum"]
