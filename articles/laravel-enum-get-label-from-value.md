@@ -96,7 +96,7 @@ use App\Enum\Suit;
 
 Route::get('/', function () {
 
-  var_dump(Suit::Heart->value)
+  var_dump(Suit::Hearts->value)
   // 1
 });
 ```
@@ -140,7 +140,7 @@ use App\Enum\Suit;
 
 Route::get('/', function () {
 
-  var_dump(Suit::Heart->label())
+  var_dump(Suit::Hearts->label())
   // 1
 });
 ```
