@@ -10,7 +10,7 @@ published: false
 
 ### 目的
 
-`value`から`label`を参照する
+Laravel で Enum に定義した`value`から`label`を参照する
 
 #### 例
 
@@ -47,7 +47,6 @@ enum Suit
 
 ```php
 use App\Enum\Suit;
-
 
 // 取得したいSuitのvalueを指定する
 $suit_value = 1;
