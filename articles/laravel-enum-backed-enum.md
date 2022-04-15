@@ -78,28 +78,30 @@ enum Suit
 }
 ```
 
+## Backed Enum
+
+Enum 型に値を持たせることもできます。
+値に依存した Enum を`Backed Enum`と呼びます。
+
+```php:app/Enums/Suit.php
+<?php
+
+namespace App\Enums
+
 enum Suit
 {
     case Hearts = 1;
     case Diamonds = 2;
     case Clubs = 3;
     case Spades = 4;
-
-    public function label(): string
-    {
-      return match ($this) {
-        Suit::Hearts => 'ハート',
-        Suit::Diamonds => 'ダイヤモンド',
-        Suit::Clubs => 'クラブ',
-        Suit::Spades => 'スペード',
-      }
-    }
 }
 ```
 
+https://www.php.net/manual/ja/language.enumerations.backed.php
+
 ### 参照方法
 
-定義した内容は、以下のように`Enumのクラス名`+`変数名`+`value`で参照できます。
+`Backed Enum`に定義した内容は、以下のように`Enumのクラス名`+`変数名`+`value`で参照できます。
 
 ```php:routes/web.php
 <?php
