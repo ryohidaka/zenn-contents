@@ -3,6 +3,7 @@ title: "Zaim APIとGoを用いて、ZaimのデータをCSV出力する"
 emoji: "🐥"
 type: "tech"
 topics: ["Go", "Zaim", "CSV", "API"]
+published_at: "2022/01/30"
 published: true
 ---
 

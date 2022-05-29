@@ -3,6 +3,7 @@ title: "Zaim APIとPythonを用いて、ZaimのデータをCSV出力する"
 emoji: "🐥"
 type: "tech"
 topics: ["Python", "Zaim", "CSV", "API"]
+published_at: "2022/01/22"
 published: true
 ---
 

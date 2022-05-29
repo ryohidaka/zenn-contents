@@ -3,6 +3,7 @@ title: "LaravelでBacked Enumを用いた際に、valueからcaseを参照する
 emoji: "🦔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["php", "Laravel", "enum"]
+published_at: "2022/04/15"
 published: true
 ---
 

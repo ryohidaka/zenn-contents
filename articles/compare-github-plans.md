@@ -3,6 +3,7 @@ title: "Githubの無料プラン(Free)と有料プラン(Pro)を比較"
 emoji: "🎉"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [GitHub]
+published_at: "2022/05/01"
 published: true
 ---
 

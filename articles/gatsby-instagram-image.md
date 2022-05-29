@@ -3,6 +3,7 @@ title: "Gatsbyで作成したページにインスタグラムの画像を表示
 emoji: "📸"
 type: "tech"
 topics: ["gatsby"]
+published_at: "2022/01/20"
 published: true
 ---
 
