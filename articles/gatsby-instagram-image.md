@@ -8,40 +8,51 @@ published: true
 ---
 
 ## 概要
-Gatsbyで作成したページにインスタグラムの画像を表示しようとした際の備忘録です。
+
+Gatsby で作成したページにインスタグラムの画像を表示しようとした際の備忘録です。
 
 ## 環境
+
 - gatsby: 4.4.0
 
 ## 手順
+
 ### パッケージを追加
+
 - [gatsby-source-instagram-all](https://www.gatsbyjs.com/plugins/gatsby-source-instagram-all/)を追加
+
 ```shell:terminal
 npm i gatsby-source-instagram-all
 ```
 
 ### プラグイン設定を変更
+
 - `gatsby-config.js`に設定を追記する
+
 ```js:gatsby-config.js
 plugins: [
     `gatsby-source-instagram-all`,
 ]
 ```
 
-### Instant Tokensに登録する
+### Instant Tokens に登録する
+
 - こちらの記事を参考にアカウント作成を行う
 
 https://zenn.dev/hidaka/articles/4d34f6dccf296a
 
 ### アクセストークンを取得し、プラグインに渡す
-1. .envにインスタグラムの情報を記述する
+
+1. .env にインスタグラムの情報を記述する
+
 ```shell:.env
 INSTAGRAM_USER_ID=
 INSTAGRAM_APP_ID=
 INSTAGRAM_APP_SECRET=
 ```
 
-2. axiosを用いてInstant Tokensにリクエストを行い、返却されたアクセストークンをプラグインの設定に追加する
+2. axios を用いて Instant Tokens にリクエストを行い、返却されたアクセストークンをプラグインの設定に追加する
+
 ```js:gatsby-node
 const axios = require("axios")
 require("dotenv").config()
@@ -72,7 +83,8 @@ exports.onPreInit = async ({ actions, store }) => {
 }
 ```
 
-3. GraphQLクエリを記述し、インスタグラム画像のリストを取得する
+3. GraphQL クエリを記述し、インスタグラム画像のリストを取得する
+
 ```js
   const result = await graphql(
     `
