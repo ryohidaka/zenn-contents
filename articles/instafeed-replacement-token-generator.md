@@ -3,32 +3,39 @@ title: "Instafeed.jsで案内されているトークンジェネレータの代
 emoji: "🔑"
 type: "tech"
 topics: ["instagram", "instafeed"]
+published_at: "2022/01/20"
 published: true
 ---
 
 ## 問題
-- [Instafeed.js](https://instafeedjs.com/#/)というサービスを用いて、インスタグラムの画像を自身のWebページに掲載しようとしたところ、案内されているHerokuのパッケージ[Instagram Token Agent](https://github.com/companionstudio/instagram-token-agent)が**一部機能有料化**のため、使用できなくなっていました。
+
+- [Instafeed.js](https://instafeedjs.com/#/)というサービスを用いて、インスタグラムの画像を自身の Web ページに掲載しようとしたところ、案内されている Heroku のパッケージ[Instagram Token Agent](https://github.com/companionstudio/instagram-token-agent)が**一部機能有料化**のため、使用できなくなっていました。
 
 ※[issue](https://github.com/companionstudio/instagram-token-agent/issues/33)にも上っていた
 
 ## 対応方法
+
 - [Instant Tokens](https://www.instant-tokens.com/home)というサービスでトークン取得処理を代替する
 
 ## 手順
-### 1. Instagram基本表示APIの設定
-- [APIのドキュメント](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)の手順に従ってステップ6までの工程を行い、**アクセストークンが取得できるように**する
 
-### 2. Instant Tokensとインスタグラムアカウントを連携する
+### 1. Instagram 基本表示 API の設定
+
+- [API のドキュメント](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)の手順に従ってステップ 6 までの工程を行い、**アクセストークンが取得できるように**する
+
+### 2. Instant Tokens とインスタグラムアカウントを連携する
+
 1. [Instant Tokens](https://www.instant-tokens.com/home)にアクセスし、アカウント登録を行う
-![Instant Tokens](/images/instafeed-replacement-token-generator/instant-tokens-login.png)
+   ![Instant Tokens](/images/instafeed-replacement-token-generator/instant-tokens-login.png)
 
 2. インスタグラムアカウントを連携する
-![](/images/instafeed-replacement-token-generator/instant-tokens-register.png)
+   ![](/images/instafeed-replacement-token-generator/instant-tokens-register.png)
 
-3. 設定を開き、JSファイルのURL もしくは リクエスト先URLを取得する
-![](/images/instafeed-replacement-token-generator/instant-tokens-list.png)
+3. 設定を開き、JS ファイルの URL もしくは リクエスト先 URL を取得する
+   ![](/images/instafeed-replacement-token-generator/instant-tokens-list.png)
 
-4. Instafeedとトークン取得用JSファイルをインポートする
+4. Instafeed とトークン取得用 JS ファイルをインポートする
+
 ```html:index.html
 <!-- Instafeed -->
 <script type="text/javascript" src="path/to/instafeed.min.js"></script>
@@ -38,9 +45,11 @@ published: true
 ```
 
 5. 変数名`InstagramToken`にトークンが代入されているため、これを用いて表示する
+
 ```js: token
 var InstagramToken = {access_token};
 ```
+
 ```html:index.html
 <div id="instafeed"></div>
 
