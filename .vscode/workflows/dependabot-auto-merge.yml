@@ -1,0 +1,33 @@
+name: Dependabot auto-merge
+on: pull_request_target
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+
+    # workflowを起動させたユーザがDependabotかどうか確認
+    if: ${{ github.actor == 'dependabot[bot]' }}
+
+    steps:
+      # 依存ライブラリを確認
+      - name: Dependabot metadata
+        id: metadata
+
+        # Dependabotが作成したPRから依存関係の情報を抽出する
+        uses: dependabot/fetch-metadata@v1.1.1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # PRを自動でマージする
+      - name: Enable auto-merge for Dependabot PRs
+
+        # minor, patchの場合は自動でマージする
+        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
