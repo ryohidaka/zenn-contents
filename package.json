@@ -10,6 +10,6 @@
   "author": "Ryo Hidaka <tech@ryohidaka.jp> (https://ryohidaka.jp/)",
   "license": "ISC",
   "dependencies": {
-    "zenn-cli": "^0.2.10"
+    "zenn-cli": "^0.2.11"
   }
 }
